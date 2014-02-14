@@ -13,7 +13,7 @@ static const uint32_t obstacleCategory =  0x1 << 1;
 
 static const float BG_VELOCITY = 100.0;
 static const float OBJECT_VELOCITY = 160.0;
-static  float CHIM_VELOCITY =700;
+static  float CHIM_VELOCITY =600;
 static inline CGPoint CGPointAdd(const CGPoint a, const CGPoint b)
 {
     return CGPointMake(a.x + b.x, a.y + b.y);
@@ -29,6 +29,8 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
+        
+        ;
         self.velocity = CGPointMake(0.0, 0.0);
         //init several sizes used in all scene
         screenRect = [[UIScreen mainScreen] bounds];
@@ -61,6 +63,24 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         scoreLabel.name = @"score";
         scoreLabel.zPosition = 10;
         [self addChild:scoreLabel];
+        
+        SKLabelNode *hscoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        hscoreLabel.text = [NSString stringWithFormat:@"Hi : %d",[[NSUserDefaults standardUserDefaults] integerForKey:@"hs"]];
+        hscoreLabel.fontSize = 20;
+        hscoreLabel.fontColor = [SKColor whiteColor];
+        hscoreLabel.position = CGPointMake(50, self.size.height-50);
+        hscoreLabel.name = @"score";
+        hscoreLabel.zPosition = 10;
+        [self addChild:hscoreLabel];
+        
+        
+        SKLabelNode *gameStart = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        gameStart.text = @"Speedy Bird";
+        gameStart.fontSize = 30;
+        gameStart.fontColor = [SKColor whiteColor];
+        gameStart.position = CGPointMake(self.size.width/2, self.size.height/2);
+        gameStart.zPosition = 10;
+        [self addChild:gameStart];
         //Making self delegate of physics World
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
@@ -356,7 +376,19 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         [retryButton setScale:.5];
         
         [self addChild:retryButton];
-        
+        if([[NSUserDefaults standardUserDefaults] integerForKey:@"hs"] < score)
+        {
+            [[NSUserDefaults standardUserDefaults]setObject: [NSNumber numberWithInt: score] forKey:@"hs"];
+            NSString * highscore;
+            highscore = @"New High Score";
+            SKLabelNode *hscore = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+            hscore.text = highscore;
+            hscore.fontSize = 20;
+            hscore.fontColor = [SKColor redColor];
+            hscore.position = CGPointMake(self.size.width/2, self.size.height/2 -40);
+            [self addChild:hscore];
+
+        }
         //SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         //SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         //[self.view presentScene:gameOverScene transition: reveal];
