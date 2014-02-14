@@ -27,7 +27,6 @@
 		5E04974318ACB32E00C00235 /* Chim_NguTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E04974218ACB32E00C00235 /* Chim_NguTests.m */; };
 		5E04975018ACB4BF00C00235 /* chim.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04974E18ACB4BF00C00235 /* chim.png */; };
 		5E04975618ACBC2200C00235 /* dat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975318ACBC2200C00235 /* dat.png */; };
-		5E04975918ADA7BC00C00235 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E04975818ADA7BC00C00235 /* GameOverScene.m */; };
 		5E04975E18ADC59700C00235 /* chim1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975C18ADC59700C00235 /* chim1.png */; };
 		5E04975F18ADC59700C00235 /* chim2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975D18ADC59700C00235 /* chim2.png */; };
 		5E04976118ADC88800C00235 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04976018ADC88800C00235 /* bullet.png */; };
@@ -74,8 +73,6 @@
 		5E04974218ACB32E00C00235 /* Chim_NguTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chim_NguTests.m; sourceTree = "<group>"; };
 		5E04974E18ACB4BF00C00235 /* chim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chim.png; sourceTree = "<group>"; };
 		5E04975318ACBC2200C00235 /* dat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dat.png; sourceTree = "<group>"; };
-		5E04975718ADA7BC00C00235 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
-		5E04975818ADA7BC00C00235 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		5E04975C18ADC59700C00235 /* chim1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chim1.png; sourceTree = "<group>"; };
 		5E04975D18ADC59700C00235 /* chim2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chim2.png; sourceTree = "<group>"; };
 		5E04976018ADC88800C00235 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
@@ -153,8 +150,6 @@
 				5E04972818ACB32E00C00235 /* CHIMViewController.m */,
 				5E04972A18ACB32E00C00235 /* CHIMMyScene.h */,
 				5E04972B18ACB32E00C00235 /* CHIMMyScene.m */,
-				5E04975718ADA7BC00C00235 /* GameOverScene.h */,
-				5E04975818ADA7BC00C00235 /* GameOverScene.m */,
 				5E04972D18ACB32E00C00235 /* Spaceship.png */,
 				5E04972F18ACB32E00C00235 /* Images.xcassets */,
 				5E04971618ACB32D00C00235 /* Supporting Files */,
@@ -316,7 +311,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E04975918ADA7BC00C00235 /* GameOverScene.m in Sources */,
 				5E04971C18ACB32D00C00235 /* main.m in Sources */,
 				5E04972C18ACB32E00C00235 /* CHIMMyScene.m in Sources */,
 				5E04972918ACB32E00C00235 /* CHIMViewController.m in Sources */,

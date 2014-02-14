@@ -7,7 +7,7 @@
 //
 
 #import "CHIMMyScene.h"
-#import "GameOverScene.h"
+
 static const uint32_t chimCategory =  0x1 << 0;
 static const uint32_t obstacleCategory =  0x1 << 1;
 
@@ -34,7 +34,10 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         screenRect = [[UIScreen mainScreen] bounds];
         screenHeight = screenRect.size.height;
         screenWidth = screenRect.size.width;
+        ongs = [[NSMutableArray alloc]init];
+        _gameStart = 0;
         
+        started = NO;
         //adding the chim
         [self addChim];
         
@@ -48,6 +51,16 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
          [self addChild:bgStatic];
         //adding the background
         [self initalizingScrollingBackground];
+        
+        //score
+        scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        scoreLabel.text = @"0";
+        scoreLabel.fontSize = 20;
+        scoreLabel.fontColor = [SKColor whiteColor];
+        scoreLabel.position = CGPointMake(self.size.width/2, self.size.height-50);
+        scoreLabel.name = @"score";
+        scoreLabel.zPosition = 10;
+        [self addChild:scoreLabel];
         //Making self delegate of physics World
         self.physicsWorld.gravity = CGVectorMake(0,0);
         self.physicsWorld.contactDelegate = self;
@@ -60,7 +73,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
 -(void)addMissile
 {
     //initalizing  node
-    SKSpriteNode *ong1;
+
     ong1 = [SKSpriteNode spriteNodeWithImageNamed:@"ong tren.png"];
     [ong1 setScale:1.5];
     
@@ -73,9 +86,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     ong1.physicsBody.usesPreciseCollisionDetection = YES;
   
     ong1.name = @"ong1";
-    
-    
-    SKSpriteNode *ong2;
+
     ong2 = [SKSpriteNode spriteNodeWithImageNamed:@"ong duoi.png"];
     [ong2 setScale:1.5];
     
@@ -96,13 +107,14 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     ong1.position = CGPointMake(self.frame.size.width + 20, (screenHeight-chieu_cao_den_tren)/2 +chieu_cao_den_tren );
     ong1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ong1.size];
     
-    float chieu_cao_den = r - 110;
-    float chieu_cao_mat_dat = 130;
+    float chieu_cao_den = r - 100;
+    float chieu_cao_mat_dat = 113;
     ong2.size = CGSizeMake( 50, chieu_cao_den-chieu_cao_mat_dat);
      ong2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ong2.size];
     ong2.position = CGPointMake(self.frame.size.width + 20,(chieu_cao_den-chieu_cao_mat_dat)/2 + chieu_cao_mat_dat);
     [self addChild:ong1];
     [self addChild:ong2];
+    [ongs addObject:ong1];
 }
 -(void)addChim
 {
@@ -130,8 +142,8 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     SKAction *fap = [SKAction animateWithTextures:@[propeller1,propeller2] timePerFrame:0.1];
     SKAction *spinForever = [SKAction repeatActionForever:fap];
     
-    SKAction *rotation2 = [SKAction rotateByAngle: -M_PI/2.0 duration:0.2];
-    [_chim runAction: rotation2];
+   // SKAction *rotation2 = [SKAction rotateByAngle: -M_PI/2.0 duration:0.2];
+    //[_chim runAction: rotation2];
     [_chim runAction:spinForever withKey:@"flap"];
     
 
@@ -142,7 +154,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
 {
     for (int i = 0; i < 2; i++) {
         SKSpriteNode *bg = [SKSpriteNode spriteNodeWithImageNamed:@"dat.png"];
-        bg.scale = 2.3;
+        bg.scale = 2;
         bg.position = CGPointMake( i* bg.size.width, 0);
         bg.anchorPoint = CGPointZero;
 
@@ -165,7 +177,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     SKNode *node = [self nodeAtPoint:location];
-    
+    started = YES;
     if ([node.name isEqualToString:@"retry"]) {
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         
@@ -177,11 +189,11 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         self.velocity = CGPointMake(0.0, 0.0);
         if(_chim.position.y < screenHeight){
             
-            SKAction *rotation = [SKAction rotateByAngle: M_PI/2.0 duration:0.3];
+            SKAction *rotation = [SKAction rotateByAngle: M_PI/2.0 duration:0.5];
             //and just run the action
             [_chim runAction: rotation];
             [_chim runAction:actionMoveUp completion:^{
-                SKAction *rotation2 = [SKAction rotateByAngle: -M_PI/2.0 duration:0.8];
+                SKAction *rotation2 = [SKAction rotateByAngle: -M_PI/2.0 duration:0.3];
                 [_chim runAction: rotation2];
             }];
         }
@@ -201,32 +213,53 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     {
       //  _dt = 0;
     }
+
     if (_dt > 0.02) {
         _dt = 0.02;
     }
     _lastUpdateTime = currentTime;
-  
+    _gameStart += _dt;
   //  _chim.position = CGPointMake(_chim.position.x,_chim.position.y - 4);
-    if(!frozen)
-    {
-        if( currentTime - _lastTimeFAP > 0.5)
+    if(started){
+        if(!frozen)
         {
-        _lastTimeFAP = currentTime + 0.5;
-        [self addMissile];
+            if(_gameStart > 2){
+                if( currentTime - _lastTimeFAP > 0.5)
+                {
+                    _lastTimeFAP = currentTime + 0.5;
+                    [self addMissile];
+                    
+                }
+            }
+            [self moveBird];
+            [self moveBg];
+            [self moveObstacle];
+            if([ongs count] >0)
+            {
+                if([ongs objectAtIndex:0])
+                {
+                    SKSpriteNode *ong = [ongs  objectAtIndex:0];
+                    if(ong.position.x < _chim.position.x){
+                        score ++;
+                        scoreLabel.text = [NSString stringWithFormat:@"%d",score];
+                        [ongs removeObjectAtIndex:0];
+                    }
+                }
+            }
+        }else {
+            if(!birdDie)
+            {
+                [self birdDown];
+            }
         }
-        [self moveBird];
-        [self moveBg];
-        [self moveObstacle];
-    }else {
-        if(!birdDie)
-        {
-        [self birdDown];
-        }
+ 
     }
-
+    
 }
 -(void) birdDown
 {
+    SKAction *rotation2 = [SKAction rotateByAngle: -M_PI/2.0 duration:0.3];
+    [_chim runAction: rotation2];
     SKAction *birdDown = [SKAction moveByX:0 y: 110 -_chim.position.y duration:1];
     [_chim runAction:birdDown];
     birdDie = YES;
@@ -240,14 +273,9 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     //4
     CGPoint gravityStep = CGPointMultiplyScalar(gravity, _dt);
     //5
-     NSLog(@"first : %f",self.velocity.y);
     self.velocity = CGPointAdd(self.velocity, gravityStep);
-      NSLog(@"second : %f",self.velocity.y);
     CGPoint velocityStep = CGPointMultiplyScalar(self.velocity, _dt);
-    
-    
-  //  CGPoint obVelocity = CGPointMake(0, -CHIM_VELOCITY);
-  //  CGPoint amtToMove = CGPointMultiplyScalar(obVelocity,_dt);
+
     
     _chim.position = CGPointAdd(_chim.position, velocityStep);
 }
@@ -273,7 +301,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     NSArray *nodes = self.children;//1
     
     for(SKNode * node in nodes){
-        if (![node.name  isEqual: @"bg"] && ![node.name  isEqual: @"chim"] && ![node.name  isEqual: @"bgStatic"]) {
+        if (![node.name  isEqual: @"bg"] && ![node.name  isEqual: @"chim"] && ![node.name  isEqual: @"bgStatic"] && ![node.name  isEqual: @"score"]) {
             SKSpriteNode *ob = (SKSpriteNode *) node;
             CGPoint obVelocity = CGPointMake(-OBJECT_VELOCITY, 0);
             CGPoint amtToMove = CGPointMultiplyScalar(obVelocity,_dt);

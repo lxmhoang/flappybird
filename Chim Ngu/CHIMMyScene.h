@@ -19,8 +19,17 @@
     NSTimeInterval _lastUpdateTime;
     NSTimeInterval _dt;
     NSTimeInterval _lastTimeFAP;
+    NSTimeInterval _gameStart;
     bool frozen;
     bool birdDie;
+    
+    SKSpriteNode *ong1;
+    
+    SKSpriteNode *ong2;
+    NSMutableArray *ongs;
+    int score;
+    SKLabelNode *scoreLabel;
+    bool started;
 }
 @property SKSpriteNode *chim;
 @property (nonatomic, assign) CGPoint velocity;
