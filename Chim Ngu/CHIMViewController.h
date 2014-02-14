@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
+#import <iAd/iAd.h>
 
-@interface CHIMViewController : UIViewController
+@interface CHIMViewController : UIViewController <ADBannerViewDelegate>
+{
+    
+    ADBannerView *_bannerView;
+}
 
 @end

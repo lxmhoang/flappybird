@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37CCA43D18AE3D0D00C2D189 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CCA43C18AE3D0D00C2D189 /* iAd.framework */; };
+		37CCA44118AE489000C2D189 /* ApActivityData.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CCA44018AE489000C2D189 /* ApActivityData.m */; };
 		5E04970E18ACB32D00C00235 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E04970D18ACB32D00C00235 /* Foundation.framework */; };
 		5E04971018ACB32D00C00235 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E04970F18ACB32D00C00235 /* CoreGraphics.framework */; };
 		5E04971218ACB32D00C00235 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E04971118ACB32D00C00235 /* UIKit.framework */; };
@@ -47,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37CCA43C18AE3D0D00C2D189 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		37CCA43F18AE489000C2D189 /* ApActivityData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApActivityData.h; sourceTree = "<group>"; };
+		37CCA44018AE489000C2D189 /* ApActivityData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApActivityData.m; sourceTree = "<group>"; };
 		5E04970A18ACB32D00C00235 /* Chim Ngu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chim Ngu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E04970D18ACB32D00C00235 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E04970F18ACB32D00C00235 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -87,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37CCA43D18AE3D0D00C2D189 /* iAd.framework in Frameworks */,
 				5E04971018ACB32D00C00235 /* CoreGraphics.framework in Frameworks */,
 				5E04971218ACB32D00C00235 /* UIKit.framework in Frameworks */,
 				5E04971418ACB32D00C00235 /* SpriteKit.framework in Frameworks */,
@@ -107,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37CCA43E18AE489000C2D189 /* ApActivityData */ = {
+			isa = PBXGroup;
+			children = (
+				37CCA43F18AE489000C2D189 /* ApActivityData.h */,
+				37CCA44018AE489000C2D189 /* ApActivityData.m */,
+			);
+			path = ApActivityData;
+			sourceTree = "<group>";
+		};
 		5E04970118ACB32D00C00235 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +144,7 @@
 		5E04970C18ACB32D00C00235 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37CCA43C18AE3D0D00C2D189 /* iAd.framework */,
 				5E04970D18ACB32D00C00235 /* Foundation.framework */,
 				5E04970F18ACB32D00C00235 /* CoreGraphics.framework */,
 				5E04971118ACB32D00C00235 /* UIKit.framework */,
@@ -141,6 +157,7 @@
 		5E04971518ACB32D00C00235 /* Chim Ngu */ = {
 			isa = PBXGroup;
 			children = (
+				37CCA43E18AE489000C2D189 /* ApActivityData */,
 				5E04974C18ACB4BF00C00235 /* Image */,
 				5E04971E18ACB32E00C00235 /* CHIMAppDelegate.h */,
 				5E04971F18ACB32E00C00235 /* CHIMAppDelegate.m */,
@@ -312,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E04971C18ACB32D00C00235 /* main.m in Sources */,
+				37CCA44118AE489000C2D189 /* ApActivityData.m in Sources */,
 				5E04972C18ACB32E00C00235 /* CHIMMyScene.m in Sources */,
 				5E04972918ACB32E00C00235 /* CHIMViewController.m in Sources */,
 				5E04972018ACB32E00C00235 /* CHIMAppDelegate.m in Sources */,

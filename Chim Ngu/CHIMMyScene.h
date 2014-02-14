@@ -7,6 +7,11 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ApActivityData.h"
+
+#define CASE(str)                       if ([__s__ isEqualToString:(str)])
+#define SWITCH(s)                       for (NSString *__s__ = (s); ; )
+#define DEFAULT
 
 @interface CHIMMyScene : SKScene<SKPhysicsContactDelegate>
 {

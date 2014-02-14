@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>ED9A615A-9258-47E8-9F61-8DA7CBE0E20F</string>
+	<string>2604DDDA-5FC6-4FF1-AC6B-39B7DDCCD4C8</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Chim Ngu</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>4B5B87D5-58A4-470C-ADB2-8B3A55BC4DD9</key>
-		<string>https://github.com/gosuvn/flappybird.git</string>
+		<key>0A7AC04A-E1A5-4D35-9CC4-6AD35576EFAA</key>
+		<string>https://github.com/lxmhoang/flappybird.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Chim Ngu.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>4B5B87D5-58A4-470C-ADB2-8B3A55BC4DD9</key>
+		<key>0A7AC04A-E1A5-4D35-9CC4-6AD35576EFAA</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/gosuvn/flappybird.git</string>
+	<string>https://github.com/lxmhoang/flappybird.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>4B5B87D5-58A4-470C-ADB2-8B3A55BC4DD9</string>
+	<string>0A7AC04A-E1A5-4D35-9CC4-6AD35576EFAA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>4B5B87D5-58A4-470C-ADB2-8B3A55BC4DD9</string>
+			<string>0A7AC04A-E1A5-4D35-9CC4-6AD35576EFAA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>flappybird</string>
 		</dict>

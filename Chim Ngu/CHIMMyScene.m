@@ -217,9 +217,30 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
                 [_chim runAction: rotation2];
             }];
         }
+    }else if ([node.name isEqualToString:@"share"])
+    {
+        [self share];
     }
   
 
+}
+
+- (void)share
+{
+    APActivityProvider *ActivityProvider = [[APActivityProvider alloc] init];
+    NSArray *Items = @[ActivityProvider];
+    
+    
+    UIActivityViewController *aVC = [[UIActivityViewController alloc] initWithActivityItems:Items applicationActivities:nil];
+    NSMutableArray *listDisableItems = [[NSMutableArray alloc] initWithObjects:UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll, UIActivityTypePostToWeibo, nil];
+    
+    [aVC setExcludedActivityTypes:listDisableItems];
+    
+    [aVC setCompletionHandler:^(NSString *activityType, BOOL completed){
+        NSLog(@"activity Type : %@", activityType);
+          }];
+    
+    [self.view.window.rootViewController presentViewController:aVC animated:YES completion:nil];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -356,22 +377,23 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         frozen = true;
         [_chim removeActionForKey:@"flap"];
         NSString * message;
-        message = @"Game Over";
+        message = @"You die";
         // 3
         SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         label.text = message;
         label.fontSize = 40;
         label.fontColor = [SKColor blackColor];
-        label.position = CGPointMake(self.size.width/2, self.size.height/2);
+        label.position = CGPointMake(self.size.width/2, 400);
         [self addChild:label];
         
         
         NSString * retrymessage;
-        retrymessage = @"Replay Game";
+        retrymessage = @"Replay";
         SKLabelNode *retryButton = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
         retryButton.text = retrymessage;
+        retryButton.fontSize = 40;
         retryButton.fontColor = [SKColor blackColor];
-        retryButton.position = CGPointMake(self.size.width/2, 50);
+        retryButton.position = CGPointMake(self.size.width/2, 350);
         retryButton.name = @"retry";
         [retryButton setScale:.5];
         
@@ -392,6 +414,17 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         //SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
         //SKScene * gameOverScene = [[GameOverScene alloc] initWithSize:self.size];
         //[self.view presentScene:gameOverScene transition: reveal];
+        
+        
+        SKLabelNode *shareButton = [SKLabelNode labelNodeWithFontNamed:@"Arial"];
+        shareButton.text = @"Share";
+        shareButton.fontSize = 40;
+        shareButton.fontColor = [SKColor blackColor];
+        shareButton.position = CGPointMake(self.size.width/2, 300);
+        shareButton.name = @"share";
+        [shareButton setScale:.5];
+        
+        [self addChild:shareButton];
         
     }
 }
