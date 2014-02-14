@@ -13,7 +13,7 @@ static const uint32_t obstacleCategory =  0x1 << 1;
 
 static const float BG_VELOCITY = 100.0;
 static const float OBJECT_VELOCITY = 160.0;
-static  float CHIM_VELOCITY =1200;
+static  float CHIM_VELOCITY =700;
 static inline CGPoint CGPointAdd(const CGPoint a, const CGPoint b)
 {
     return CGPointMake(a.x + b.x, a.y + b.y);
@@ -122,7 +122,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
     _chim.physicsBody.usesPreciseCollisionDetection = YES;
     _chim.name = @"chim";
     _chim.position = CGPointMake(screenWidth/3,screenHeight/4*3);
-    actionMoveUp = [SKAction moveByX:0 y:70 duration:.2];
+    actionMoveUp = [SKAction moveByX:0 y:60 duration:.2];
     actionMoveDown = [SKAction moveByX:0 y:-30 duration:.2];
     
     SKTexture *propeller1 = [SKTexture textureWithImageNamed:@"chim1.png"];
@@ -210,9 +210,9 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
   //  _chim.position = CGPointMake(_chim.position.x,_chim.position.y - 4);
     if(!frozen)
     {
-        if( currentTime - _lastTimeFAP > 1)
+        if( currentTime - _lastTimeFAP > 0.5)
         {
-        _lastTimeFAP = currentTime + 1;
+        _lastTimeFAP = currentTime + 0.5;
         [self addMissile];
         }
         [self moveBird];
