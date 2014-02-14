@@ -28,7 +28,6 @@
 		5E04975018ACB4BF00C00235 /* chim.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04974E18ACB4BF00C00235 /* chim.png */; };
 		5E04975618ACBC2200C00235 /* dat.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975318ACBC2200C00235 /* dat.png */; };
 		5E04975918ADA7BC00C00235 /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E04975818ADA7BC00C00235 /* GameOverScene.m */; };
-		5E04975B18ADC37200C00235 /* red-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975A18ADC37200C00235 /* red-missile.png */; };
 		5E04975E18ADC59700C00235 /* chim1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975C18ADC59700C00235 /* chim1.png */; };
 		5E04975F18ADC59700C00235 /* chim2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04975D18ADC59700C00235 /* chim2.png */; };
 		5E04976118ADC88800C00235 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E04976018ADC88800C00235 /* bullet.png */; };
@@ -77,7 +76,6 @@
 		5E04975318ACBC2200C00235 /* dat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dat.png; sourceTree = "<group>"; };
 		5E04975718ADA7BC00C00235 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		5E04975818ADA7BC00C00235 /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
-		5E04975A18ADC37200C00235 /* red-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red-missile.png"; sourceTree = "<group>"; };
 		5E04975C18ADC59700C00235 /* chim1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chim1.png; sourceTree = "<group>"; };
 		5E04975D18ADC59700C00235 /* chim2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chim2.png; sourceTree = "<group>"; };
 		5E04976018ADC88800C00235 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
@@ -203,7 +201,6 @@
 				5E04975D18ADC59700C00235 /* chim2.png */,
 				5E04976218ADEB3E00C00235 /* ong tren.png */,
 				5E04976318ADEB3F00C00235 /* ong duoi.png */,
-				5E04975A18ADC37200C00235 /* red-missile.png */,
 				5E04975318ACBC2200C00235 /* dat.png */,
 				5E04974E18ACB4BF00C00235 /* chim.png */,
 			);
@@ -287,7 +284,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E04975B18ADC37200C00235 /* red-missile.png in Resources */,
 				5E04976B18AE08ED00C00235 /* background.png in Resources */,
 				5E04976118ADC88800C00235 /* bullet.png in Resources */,
 				5E04975618ACBC2200C00235 /* dat.png in Resources */,
@@ -545,6 +541,7 @@
 				5E04974818ACB32E00C00235 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5E04974918ACB32E00C00235 /* Build configuration list for PBXNativeTarget "Chim NguTests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +550,7 @@
 				5E04974B18ACB32E00C00235 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

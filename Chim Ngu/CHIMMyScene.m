@@ -59,54 +59,53 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
 }
 -(void)addMissile
 {
-    //initalizing spaceship node
-    SKSpriteNode *missile;
-    missile = [SKSpriteNode spriteNodeWithImageNamed:@"ong tren.png"];
-    [missile setScale:1.5];
+    //initalizing  node
+    SKSpriteNode *ong1;
+    ong1 = [SKSpriteNode spriteNodeWithImageNamed:@"ong tren.png"];
+    [ong1 setScale:1.5];
     
     //Adding SpriteKit physicsBody for collision detection
-    missile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:missile.size];
-    missile.physicsBody.categoryBitMask = obstacleCategory;
-    missile.physicsBody.dynamic = YES;
-    missile.physicsBody.contactTestBitMask = chimCategory;
-    missile.physicsBody.collisionBitMask = 0;
-    missile.physicsBody.usesPreciseCollisionDetection = YES;
+    ong1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ong1.size];
+    ong1.physicsBody.categoryBitMask = obstacleCategory;
+    ong1.physicsBody.dynamic = YES;
+    ong1.physicsBody.contactTestBitMask = chimCategory;
+    ong1.physicsBody.collisionBitMask = 0;
+    ong1.physicsBody.usesPreciseCollisionDetection = YES;
   
-    missile.name = @"missile";
+    ong1.name = @"ong1";
     
     
-    SKSpriteNode *missile2;
-    missile2 = [SKSpriteNode spriteNodeWithImageNamed:@"ong duoi.png"];
-    [missile2 setScale:1.5];
+    SKSpriteNode *ong2;
+    ong2 = [SKSpriteNode spriteNodeWithImageNamed:@"ong duoi.png"];
+    [ong2 setScale:1.5];
     
     //Adding SpriteKit physicsBody for collision detection
-    missile2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:missile.size];
-    missile2.physicsBody.categoryBitMask = obstacleCategory;
-    missile2.physicsBody.dynamic = YES;
-    missile2.physicsBody.contactTestBitMask = chimCategory;
-    missile2.physicsBody.collisionBitMask = 0;
-    missile2.physicsBody.usesPreciseCollisionDetection = YES;
-    missile2.name = @"missile2";
+    ong2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ong1.size];
+    ong2.physicsBody.categoryBitMask = obstacleCategory;
+    ong2.physicsBody.dynamic = YES;
+    ong2.physicsBody.contactTestBitMask = chimCategory;
+    ong2.physicsBody.collisionBitMask = 0;
+    ong2.physicsBody.usesPreciseCollisionDetection = YES;
+    ong2.name = @"ong2";
 
     //selecting random y position for missile
     int r = arc4random() % 130 + 320;
 
     float chieu_cao_den_tren = r ;
-    missile.size = CGSizeMake( 50, screenHeight- chieu_cao_den_tren);
-    missile.position = CGPointMake(self.frame.size.width + 20, (screenHeight-chieu_cao_den_tren)/2 +chieu_cao_den_tren );
-    missile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:missile.size];
+    ong1.size = CGSizeMake( 50, screenHeight- chieu_cao_den_tren);
+    ong1.position = CGPointMake(self.frame.size.width + 20, (screenHeight-chieu_cao_den_tren)/2 +chieu_cao_den_tren );
+    ong1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ong1.size];
     
     float chieu_cao_den = r - 110;
     float chieu_cao_mat_dat = 130;
-    missile2.size = CGSizeMake( 50, chieu_cao_den-chieu_cao_mat_dat);
-     missile2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:missile2.size];
-    missile2.position = CGPointMake(self.frame.size.width + 20,(chieu_cao_den-chieu_cao_mat_dat)/2 + chieu_cao_mat_dat);
-    [self addChild:missile];
-    [self addChild:missile2];
+    ong2.size = CGSizeMake( 50, chieu_cao_den-chieu_cao_mat_dat);
+     ong2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:ong2.size];
+    ong2.position = CGPointMake(self.frame.size.width + 20,(chieu_cao_den-chieu_cao_mat_dat)/2 + chieu_cao_mat_dat);
+    [self addChild:ong1];
+    [self addChild:ong2];
 }
 -(void)addChim
 {
-    //initalizing spaceship node
     _chim = [SKSpriteNode spriteNodeWithImageNamed:@"chim1.png"];
     _chim.scale = 2;
     _chim.zPosition = 2;
@@ -178,7 +177,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b)
         self.velocity = CGPointMake(0.0, 0.0);
         if(_chim.position.y < screenHeight){
             
-            SKAction *rotation = [SKAction rotateByAngle: M_PI/2.0 duration:0.1];
+            SKAction *rotation = [SKAction rotateByAngle: M_PI/2.0 duration:0.3];
             //and just run the action
             [_chim runAction: rotation];
             [_chim runAction:actionMoveUp completion:^{
